@@ -13,9 +13,9 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center group relative">
               <img
-                src="/logo/black.jpeg"
+                src="/logo/black-removebg-preview.png"
                 alt="Nestbotics"
-                className="h-24 w-auto object-contain transition-transform group-hover:scale-105 mix-blend-screen"
+                className="h-32 w-auto object-contain transition-transform group-hover:scale-105 mix-blend-screen"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   const fallback = document.getElementById('logo-fallback');
