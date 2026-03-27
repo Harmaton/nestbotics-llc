@@ -7,6 +7,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/logo/black-removebg-preview.png',
+  },
   title: "Nestbotics | Automation Without Complexity",
   description: "Nestbotics provides robotic welding integration, programming, and automation support to manufacturers looking to improve productivity, consistency, and efficiency.",
 };
