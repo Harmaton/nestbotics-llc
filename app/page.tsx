@@ -100,9 +100,11 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Automation Consulting", desc: "We evaluate your current processes and identify opportunities for automation, efficiency gains, and cost reduction. From concept to execution, we guide you every step of the way." },
-              { title: "System Sourcing & Integration", desc: "Looking to invest in a robotic system? We help you identify the right solution, connect with trusted providers, specify system requirements, and oversee integration from purchase to production." },
-              { title: "Turnkey Project Support", desc: "We stay involved throughout the entire lifecycle including pre-sale consultation, system design collaboration, installation and commissioning support, and post-install optimization." },
+              { title: "Weld Development", desc: "We specialize in developing high-quality, repeatable weld processes for robotic applications. From initial setup to final optimization, we ensure every weld meets both structural and visual standards while maintaining efficiency on the production floor." },
+              { title: "Robot Programming", desc: "We provide advanced robot programming support for industrial welding systems, with a focus on reliability, flexibility, and ease of operation for your team." },
+              { title: "Cycle Time Optimization", desc: "We help manufacturers maximize throughput by identifying inefficiencies and optimizing every aspect of the robotic welding process." },
+              { title: "Operator & Programming Training", desc: "We provide hands-on training for operators, technicians, and engineers to ensure your team can confidently run, maintain, and optimize your robotic systems." },
+              { title: "On-Site Support", desc: "Troubleshooting, process improvement, robot adjustments, operator training, and maintenance guidance." },
             ].map((service, idx) => (
               <div
                 key={idx}
