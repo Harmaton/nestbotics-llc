@@ -1,12 +1,17 @@
 'use client'
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'About Us', href: '/about' },
+  ];
 
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#0a192f]/80 border-b border-blue-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] transition-all">
@@ -31,39 +36,38 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
-            {[
-              { name: 'Home', href: '/' },
-              { name: 'Services', href: '/services' },
-              { name: 'About Us', href: '/about' },
-            ].map((link) => {
+          <div className="hidden md:flex md:items-center md:gap-1">
+            {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link 
-                  key={link.name} 
-                  href={link.href} 
-                  className={`px-4 py-2 text-sm font-semibold transition-all rounded-full flex items-center gap-2 ${
-                    isActive 
-                      ? 'bg-blue-600/30 text-white border border-blue-400/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]' 
-                      : 'text-blue-100 hover:text-white hover:bg-white/10 border border-transparent'
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`relative px-5 py-2 text-sm font-semibold transition-all duration-200 rounded-lg overflow-hidden ${
+                    isActive
+                      ? 'text-white bg-white/8 border border-white/10'
+                      : 'text-blue-200/75 hover:text-white hover:bg-white/6 border border-transparent'
                   }`}
                 >
-                  {link.name}
+                  {/* Left accent bar — active page indicator */}
                   {isActive && (
-                    <span className="flex h-2 w-2 relative ml-1">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-300 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
-                    </span>
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-blue-400 rounded-r-full shadow-[0_0_8px_rgba(96,165,250,0.9)]" />
                   )}
+                  {link.name}
                 </Link>
               );
             })}
-            <div className="pl-4">
-              <Link href="/contact" className={`px-6 py-2.5 rounded-md text-sm font-bold transition-all block hover:-translate-y-0.5 border ${
-                pathname === '/contact'
-                  ? 'bg-blue-500 text-white border-blue-300 shadow-[0_0_25px_rgba(59,130,246,0.8)]'
-                  : 'bg-blue-600/90 backdrop-blur-sm text-white hover:bg-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(37,99,235,0.7)] border-blue-400/30'
-              }`}>
+
+            {/* Divider + CTA */}
+            <div className="pl-4 ml-2 border-l border-white/10">
+              <Link
+                href="/contact"
+                className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all block hover:-translate-y-0.5 border ${
+                  pathname === '/contact'
+                    ? 'bg-blue-500 text-white border-blue-400/60 shadow-[0_0_20px_rgba(59,130,246,0.5)]'
+                    : 'bg-blue-500/20 text-blue-100 hover:bg-blue-500 hover:text-white border-blue-400/30 hover:border-blue-400/60 shadow-[0_0_12px_rgba(37,99,235,0.2)] hover:shadow-[0_0_22px_rgba(37,99,235,0.5)]'
+                }`}
+              >
                 Get an Estimate
               </Link>
             </div>
@@ -91,45 +95,38 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Snackbar */}
-      <div 
+      {/* Mobile Menu */}
+      <div
         className={`md:hidden absolute w-full left-0 origin-top transition-all duration-300 ease-in-out ${
           isMobileMenuOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="bg-[#0a192f]/95 backdrop-blur-2xl border-b border-blue-500/30 px-4 pt-6 pb-8 space-y-3 shadow-2xl">
-          {[
-            { name: 'Home', href: '/' },
-            { name: 'Services', href: '/services' },
-            { name: 'About Us', href: '/about' },
-          ].map((link) => {
+        <div className="bg-[#0a192f]/95 backdrop-blur-2xl border-b border-blue-500/30 px-4 pt-6 pb-8 space-y-2 shadow-2xl">
+          {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-5 py-3 rounded-xl text-lg font-bold transition-all flex items-center justify-between ${
+                className={`relative flex items-center px-5 py-3 rounded-xl text-base font-bold transition-all overflow-hidden ${
                   isActive
-                    ? 'bg-blue-600/30 text-white border border-blue-400/40 shadow-sm'
-                    : 'text-blue-100 hover:text-white hover:bg-white/10'
+                    ? 'bg-white/8 text-white border border-white/10'
+                    : 'text-blue-200/75 hover:text-white hover:bg-white/6 border border-transparent'
                 }`}
               >
-                {link.name}
                 {isActive && (
-                  <span className="flex h-2.5 w-2.5 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-300 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-400"></span>
-                  </span>
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 bg-blue-400 rounded-r-full shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
                 )}
+                {link.name}
               </Link>
             );
           })}
-          <div className="pt-6 mt-6 border-t border-blue-500/20">
+          <div className="pt-5 mt-4 border-t border-white/10">
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-center px-6 py-4 rounded-xl text-lg font-bold bg-blue-600 text-white hover:bg-blue-500 shadow-lg border border-blue-400/30 transition-all hover:scale-[1.02]"
+              className="block w-full text-center px-6 py-4 rounded-xl text-base font-bold bg-blue-500/20 text-blue-100 hover:bg-blue-500 hover:text-white border border-blue-400/30 transition-all shadow-lg"
             >
               Get an Estimate
             </Link>
