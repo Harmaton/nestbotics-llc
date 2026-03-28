@@ -12,7 +12,7 @@ export default function Home() {
             src="/images/hero_welding.png"
             alt="Robotic Welding Automation"
             fill
-            className="object-cover opacity-200 mix-blend-screen"
+            className="object-cover  mix-blend-screen"
             priority
           />
           {/* deeper multiply layer → richer navy */}
