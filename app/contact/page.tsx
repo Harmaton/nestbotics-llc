@@ -1,8 +1,29 @@
 "use client";
 
 import Image from 'next/image';
+import { useState } from 'react';
+import { sendContactMessage } from '../actions/contact';
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ success?: boolean; error?: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus(null);
+    
+    const formData = new FormData(e.currentTarget);
+    const result = await sendContactMessage(formData);
+    
+    setStatus(result);
+    setIsSubmitting(false);
+    
+    if (result.success) {
+      e.currentTarget.reset();
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <div className="bg-[#0a192f] text-white py-24 lg:py-32 text-center relative overflow-hidden">
@@ -66,35 +87,45 @@ export default function Contact() {
           
           <div className="p-12 lg:w-7/12 bg-white flex flex-col justify-center">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-8">Send Us a Message</h2>
-            <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('This is a demo contact form for Nestbotics.'); }}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {status?.success && (
+                <div className="p-4 mb-4 text-sm text-green-800 rounded-xl bg-green-50">
+                  Thank you for reaching out! Your message has been sent successfully and we'll get back to you soon.
+                </div>
+              )}
+              {status?.error && (
+                <div className="p-4 mb-4 text-sm text-red-800 rounded-xl bg-red-50">
+                  {status.error}
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">First Name</label>
-                  <input type="text" id="firstName" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="John" />
+                  <input required name="firstName" type="text" id="firstName" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="John" disabled={isSubmitting} />
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Last Name</label>
-                  <input type="text" id="lastName" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="Doe" />
+                  <input required name="lastName" type="text" id="lastName" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="Doe" disabled={isSubmitting} />
                 </div>
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Email Address</label>
-                <input type="email" id="email" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="john@company.com" />
+                <input required name="email" type="email" id="email" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="john@company.com" disabled={isSubmitting} />
               </div>
 
               <div>
                 <label htmlFor="company" className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Company Name <span className="text-slate-400 font-normal normal-case">(Optional)</span></label>
-                <input type="text" id="company" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="Acme Manufacturing" />
+                <input name="company" type="text" id="company" className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all bg-slate-50 focus:bg-white text-slate-900" placeholder="Acme Manufacturing" disabled={isSubmitting} />
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">How can we help you?</label>
-                <textarea id="message" rows={5} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all resize-none bg-slate-50 focus:bg-white text-slate-900" placeholder="Tell us about your automation goals..."></textarea>
+                <textarea required name="message" id="message" rows={5} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all resize-none bg-slate-50 focus:bg-white text-slate-900" placeholder="Tell us about your automation goals..." disabled={isSubmitting}></textarea>
               </div>
               
-              <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded-xl transition-all shadow-[0_10px_20px_-10px_rgba(37,99,235,0.6)] hover:shadow-[0_15px_30px_-10px_rgba(37,99,235,0.8)] hover:-translate-y-1 mt-4 text-lg">
-                Send Message
+              <button type="submit" disabled={isSubmitting} className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-75 disabled:cursor-not-allowed disabled:hover:-translate-y-0 text-white font-bold py-5 px-8 rounded-xl transition-all shadow-[0_10px_20px_-10px_rgba(37,99,235,0.6)] hover:shadow-[0_15px_30px_-10px_rgba(37,99,235,0.8)] hover:-translate-y-1 mt-4 text-lg">
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
