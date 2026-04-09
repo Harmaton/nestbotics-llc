@@ -1,5 +1,23 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, Variants } from 'framer-motion';
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
 
 export default function Home() {
   return (
@@ -12,16 +30,15 @@ export default function Home() {
             src="/images/hero_welding.png"
             alt="Robotic Welding Automation"
             fill
-            className="object-cover  mix-blend-screen"
+            className="object-cover mix-blend-screen"
             priority
           />
-          {/* deeper multiply layer → richer navy */}
+          {/* deeper multiply layer */}
           <div className="absolute inset-0 bg-[#0a192f]/80 mix-blend-multiply" />
-          {/* tighter gradient so the image shows more in the mid-section */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f] via-[#0d2240]/50 to-[#0a192f] opacity-90" />
         </div>
 
-        {/* ── Dot-grid pattern overlay (matches CTA sections) ── */}
+        {/* ── Dot-grid pattern overlay ── */}
         <div
           className="absolute inset-0 z-0 opacity-[0.06]"
           style={{
@@ -30,7 +47,7 @@ export default function Home() {
           }}
         />
 
-        {/* Diagonal rule lines for industrial texture */}
+        {/* Diagonal rule lines */}
         <div
           className="absolute inset-0 z-0 opacity-[0.03]"
           style={{
@@ -44,11 +61,15 @@ export default function Home() {
           }}
         />
 
-        {/* Tuned glow orbs — less aggressive, more balanced */}
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl z-0 pointer-events-none" />
         <div className="absolute bottom-0 -left-20 w-80 h-80 rounded-full bg-blue-400/10 blur-3xl pointer-events-none z-0" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col items-center sm:items-start animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col items-center sm:items-start"
+        >
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
             Automation Without <br className="hidden sm:block" />
             <span className="text-blue-400 drop-shadow-[0_0_25px_rgba(96,165,250,0.45)]">Complexity</span>
@@ -70,12 +91,18 @@ export default function Home() {
               Contact Us
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ── Intro ── */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 bg-white overflow-hidden">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
           <div className="inline-flex items-center justify-center p-3 bg-blue-600/8 rounded-2xl mb-6 shadow-sm border border-blue-100">
             <svg className="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -85,18 +112,30 @@ export default function Home() {
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
             Our focus is simple: maximizing uptime, enhancing robotic performance, and helping manufacturers achieve consistent production—while also guiding them in selecting the right automation solutions for long-term success.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* ── Core Services ── */}
-      <section className="py-24 bg-slate-100 relative border-t border-slate-200">
+      <section className="py-24 bg-slate-100 relative border-t border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-[#0a192f]">What We Offer</h2>
             <div className="w-24 h-1.5 bg-blue-600 mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {[
               { title: "Weld Development", desc: "We specialize in developing high-quality, repeatable weld processes for robotic applications. From initial setup to final optimization, we ensure every weld meets both structural and visual standards while maintaining efficiency on the production floor." },
               { title: "Robot Programming", desc: "We provide advanced robot programming support for industrial welding systems, with a focus on reliability, flexibility, and ease of operation for your team." },
@@ -105,15 +144,13 @@ export default function Home() {
               { title: "On-Site Support", desc: "Troubleshooting, process improvement, robot adjustments, operator training, and maintenance guidance." },
               { title: "PLC Programming and Controls", desc: "We provide Logic development and modifications plus Robot to PLC integration." },
             ].map((service, idx) => (
-              <div
+              <motion.div
+                variants={fadeInUp}
                 key={idx}
                 className="bg-white p-8 rounded-2xl shadow-[0_4px_24px_-6px_rgba(10,25,47,0.10)] border border-slate-200 transition-all hover:-translate-y-2 hover:shadow-[0_16px_36px_-10px_rgba(37,99,235,0.18)] hover:border-blue-200 group relative overflow-hidden"
               >
-                {/* decorative circle — slate so it reads on white */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-100 rounded-full translate-x-16 -translate-y-16 group-hover:bg-blue-600 transition-colors duration-500 z-0" />
-
                 <div className="relative z-10">
-                  {/* icon — navy tint default, blue-600 fill on hover */}
                   <div className="w-14 h-14 bg-[#0a192f]/8 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm border border-slate-200 group-hover:border-blue-600">
                     <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -122,29 +159,89 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-[#0a192f] mb-4 group-hover:text-blue-700 transition-colors">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed">{service.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="text-center mt-16">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.8 }}
+            variants={fadeInUp}
+            className="text-center mt-16"
+          >
             <Link href="/services" className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors group text-lg">
               View detailed consulting services offered
               <svg className="w-6 h-6 ml-2 transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Supported Robotic Systems ── */}
+      <section className="py-24 bg-white relative border-t border-slate-200 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0a192f]">Robotic Systems We Support</h2>
+            <div className="w-24 h-1.5 bg-blue-600 mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
+            <p className="mt-6 text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              We have extensive experience integrating and programming top-tier industrial robots to deliver exceptional precision and reliability.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
+          >
+            {[
+              { name: "CLOOS", img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=400", desc: "Advanced welding" },
+              { name: "FANUC", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400", desc: "Automation leader" },
+              { name: "ABB", img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=400", desc: "Precision assembly" },
+              { name: "Yaskawa", img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=400", desc: "Motion control" },
+              { name: "Nachi", img: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=400", desc: "Heavy duty robotics" },
+            ].map((robot, idx) => (
+              <motion.div 
+                variants={fadeInUp}
+                key={idx} 
+                className="group relative bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200"
+              >
+                <div className="aspect-[4/3] w-full overflow-hidden relative">
+                  <img src={robot.img} alt={`${robot.name} Robotics`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/90 via-[#0a192f]/40 to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">{robot.name}</h3>
+                  <p className="text-blue-100/80 text-sm font-medium">{robot.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* ── CTA ── */}
       <section className="py-24 bg-[#0a192f] text-white relative overflow-hidden">
-        {/* subtle blue glow — top right, matching services page */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full translate-x-32 -translate-y-32 pointer-events-none" />
-        {/* dot-grid texture */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20" />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 text-balance">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 text-balance"
+        >
           <h2 className="text-4xl font-bold mb-6 drop-shadow-sm">Let&apos;s Build Your System</h2>
           <p className="text-blue-200 text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
             Whether you&apos;re exploring automation for the first time or scaling an existing operation, Nestbotics is your partner in building smarter manufacturing systems.
@@ -155,7 +252,7 @@ export default function Home() {
           >
             Get in Touch Today
           </Link>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
