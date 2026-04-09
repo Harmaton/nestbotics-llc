@@ -116,8 +116,8 @@ export default function Services() {
           <p className="text-blue-400 text-sm font-semibold tracking-[0.2em] uppercase mb-4">Nestbotics Portfolio</p>
           <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight drop-shadow-md">Consulting & System Solutions</h1>
           <p className="mt-8 text-xl md:text-2xl text-blue-200 max-w-3xl mx-auto leading-relaxed font-medium border-l-4 border-blue-400 pl-6 py-2 text-left sm:text-center sm:border-l-0 sm:pl-0">
-            We go beyond programming and support—we act as a strategic partner for manufacturers looking to implement, optimize, or expand their automation capabilities. We bridge the gap between manufacturers and leading robotics providers, delivering complete, scalable solutions tailored to your production goals.
-          </p>
+            We go beyond programming and support—we act as a strategic partner for manufacturers looking to implement, optimize, or expand their automation capabilities. 
+            </p>
         </div>
       </div>
 
@@ -165,9 +165,9 @@ export default function Services() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full translate-x-32 -translate-y-32 pointer-events-none" />
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20" />
           <div className="relative z-10">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Let's Build Your System</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Let&apos;s Build Your System</h2>
             <p className="text-blue-200 text-xl lg:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed">
-              Whether you're exploring automation for the first time or scaling an existing operation, Nestbotics is your partner in building smarter manufacturing systems.
+              Whether you&apos;re exploring automation for the first time or scaling an existing operation, Nestbotics is your partner in building smarter manufacturing systems.
             </p>
             <Link
               href="/contact"

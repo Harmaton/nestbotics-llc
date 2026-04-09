@@ -54,7 +54,7 @@ export default function Home() {
             <span className="text-blue-400 drop-shadow-[0_0_25px_rgba(96,165,250,0.45)]">Complexity</span>
           </h1>
           <p className="mt-6 text-xl md:text-2xl text-blue-200 max-w-2xl leading-relaxed">
-            Nestbotics provides robotic welding integration, programming, and automation support to manufacturers looking to improve productivity, consistency, and efficiency.
+            Nestbotics provides robotic integration, programming, and automation support to manufacturers looking to improve productivity, consistency, and efficiency.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-5">
             <Link
@@ -83,9 +83,7 @@ export default function Home() {
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-[#0a192f] mb-6">Bridging the Gap in Manufacturing</h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            At Nestbotics, we bridge the gap between robotic technology and real-world manufacturing. We help
-            companies implement robotic welding systems, optimize automation processes, and maintain peak
-            production performance.
+            Our focus is simple: maximizing uptime, enhancing robotic performance, and helping manufacturers achieve consistent production—while also guiding them in selecting the right automation solutions for long-term success.
           </p>
         </div>
       </section>
@@ -105,6 +103,7 @@ export default function Home() {
               { title: "Cycle Time Optimization", desc: "We help manufacturers maximize throughput by identifying inefficiencies and optimizing every aspect of the robotic welding process." },
               { title: "Operator & Programming Training", desc: "We provide hands-on training for operators, technicians, and engineers to ensure your team can confidently run, maintain, and optimize your robotic systems." },
               { title: "On-Site Support", desc: "Troubleshooting, process improvement, robot adjustments, operator training, and maintenance guidance." },
+              { title: "PLC Programming and Controls", desc: "We provide Logic development and modifications plus Robot to PLC integration." },
             ].map((service, idx) => (
               <div
                 key={idx}
@@ -146,9 +145,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 text-balance">
-          <h2 className="text-4xl font-bold mb-6 drop-shadow-sm">Let's Build Your System</h2>
+          <h2 className="text-4xl font-bold mb-6 drop-shadow-sm">Let&apos;s Build Your System</h2>
           <p className="text-blue-200 text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
-            Whether you're exploring automation for the first time or scaling an existing operation, Nestbotics is your partner in building smarter manufacturing systems.
+            Whether you&apos;re exploring automation for the first time or scaling an existing operation, Nestbotics is your partner in building smarter manufacturing systems.
           </p>
           <Link
             href="/contact"

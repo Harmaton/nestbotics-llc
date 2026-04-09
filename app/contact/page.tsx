@@ -9,9 +9,9 @@ export default function Contact() {
          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20"></div>
          <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight">Let's Talk Automation</h1>
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight">Let&apos;s Talk Automation</h1>
             <p className="mt-6 text-xl text-blue-200 max-w-2xl mx-auto leading-relaxed">
-              We're ready to help you unlock the full potential of your system. Reach out to our nationwide team of robotic specialists.
+              We&apos;re ready to help you unlock the full potential of your system. Reach out to our nationwide team of robotic specialists.
             </p>
          </div>
       </div>
