@@ -125,7 +125,7 @@ export default function Home() {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0a192f]">What We Offer</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0a192f]">Our Services</h2>
             <div className="w-24 h-1.5 bg-blue-600 mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
           </motion.div>
 
@@ -142,7 +142,7 @@ export default function Home() {
               { title: "Cycle Time Optimization", desc: "We help manufacturers maximize throughput by identifying inefficiencies and optimizing every aspect of the robotic welding process." },
               { title: "Operator & Programming Training", desc: "We provide hands-on training for operators, technicians, and engineers to ensure your team can confidently run, maintain, and optimize your robotic systems." },
               { title: "On-Site Support", desc: "Troubleshooting, process improvement, robot adjustments, operator training, and maintenance guidance." },
-              { title: "PLC Programming and Controls", desc: "We provide Logic development and modifications plus Robot to PLC integration." },
+              { title: "PLC Programming and Controls", desc: "We provide Logic development and modifications plus Robot to PLC integration. PLC Systems we support: Siemens, Allen-Bradley" },
             ].map((service, idx) => (
               <motion.div
                 variants={fadeInUp}
@@ -205,11 +205,11 @@ export default function Home() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
           >
             {[
-              { name: "CLOOS", img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=400", desc: "Advanced welding" },
-              { name: "FANUC", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400", desc: "Automation leader" },
-              { name: "ABB", img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=400", desc: "Precision assembly" },
-              { name: "Yaskawa", img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=400", desc: "Motion control" },
-              { name: "Nachi", img: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=400", desc: "Heavy duty robotics" },
+              { name: "CLOOS", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy1kDfkdU9Ej1GCWvaIlidzFx3coSuU7rRJ8OKB", desc: "Advanced welding" },
+              { name: "FANUC", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy10aiG8Nl6l2IHxapMvR7E5CbPW1rZefoUNizt", desc: "Automation leader" },
+              { name: "ABB", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy1zsLChhGk8OcCUyD67APg0YoqJeKQHRTx4G9W", desc: "Precision assembly" },
+              { name: "Yaskawa", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy1GrFY8mcUNFh9fOnQBGmkgdIq8Sz3puWoUXx1", desc: "Motion control" },
+              { name: "Nachi", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy10aiG8Nl6l2IHxapMvR7E5CbPW1rZefoUNizt", desc: "Heavy duty robotics" },
             ].map((robot, idx) => (
               <motion.div 
                 variants={fadeInUp}
