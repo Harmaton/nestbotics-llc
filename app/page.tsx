@@ -209,7 +209,7 @@ export default function Home() {
               { name: "FANUC", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy10aiG8Nl6l2IHxapMvR7E5CbPW1rZefoUNizt", desc: "Automation leader" },
               { name: "ABB", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy1zsLChhGk8OcCUyD67APg0YoqJeKQHRTx4G9W", desc: "Precision assembly" },
               { name: "Yaskawa", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy1GrFY8mcUNFh9fOnQBGmkgdIq8Sz3puWoUXx1", desc: "Motion control" },
-              { name: "Nachi", img: "https://62n8v46tsi.ufs.sh/f/BOJeaMhARWy10aiG8Nl6l2IHxapMvR7E5CbPW1rZefoUNizt", desc: "Heavy duty robotics" },
+              { name: "Nachi", img: "/nachi.jpeg", desc: "Heavy duty robotics" },
             ].map((robot, idx) => (
               <motion.div 
                 variants={fadeInUp}
