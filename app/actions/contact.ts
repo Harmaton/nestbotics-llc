@@ -18,7 +18,7 @@ export async function sendContactMessage(formData: FormData) {
   try {
     const { data, error } = await resend.emails.send({
       from: 'Nestbotics Contact Form <onboarding@resend.dev>',
-      to: 'info@nestboticsllc.com',
+      to: 'nestboticsllc@gmail.com',
       replyTo: email,
       subject: `New Contact Request from ${firstName} ${lastName}`,
       text: `New Contact Request\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nCompany: ${company || 'N/A'}\nMessage:\n${message}`,
