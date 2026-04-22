@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   icons: {
     icon: '/logo/logo.png',
